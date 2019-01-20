@@ -8,11 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
+import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.PixyPacket;
+import java.util.HashMap;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class SimpleAuto extends CommandGroup {
+  Vision ourEyes = new frc.robot.subsystems.Vision();
+  HashMap<Integer, PixyPacket> Data = new HashMap<Integer, PixyPacket>();
   public SimpleAuto(){
       addSequential(new Drive(.65,0.2), 2);
       addSequential(new Drive(.1,.6), .5);

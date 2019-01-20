@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.subsystems.Intake;
 import frc.robot.commands.SimpleAuto;
 import edu.wpi.first.cameraserver.CameraServer;
+import frc.robot.subsystems.Vision;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -37,6 +38,8 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>(); 
 
+  Vision Eyes;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -52,6 +55,8 @@ public class Robot extends TimedRobot {
     server = CameraServer.getInstance();
     //server.setQuality(50);
     server.startAutomaticCapture("cam0",0);
+
+   Eyes = new Vision();
   }
 
   /**
@@ -121,6 +126,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+
   }
 
   /**
@@ -129,6 +135,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    Eyes.testPixy1();
+    Eyes.PostCustomSmartDashInfo();
   }
 
   /**
