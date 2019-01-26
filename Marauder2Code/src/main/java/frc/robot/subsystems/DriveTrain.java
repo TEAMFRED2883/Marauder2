@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.commands.LineUp;
 import frc.robot.RobotMap;
 //import frc.robot.commands.Drive;
 
@@ -41,7 +42,7 @@ public class DriveTrain extends Subsystem {
     //m_dDrive = new DifferentialDrive(m_Left, m_Right);
     m_Left.setInverted(true);
     m_dDrive.setSafetyEnabled(true);
-    m_dDrive.setExpiration(0.1);
+    m_dDrive.setExpiration(0.3);
     m_dDrive.setMaxOutput(1);
 
   }
@@ -54,6 +55,6 @@ public class DriveTrain extends Subsystem {
   }
   public void DriveWithXbox(double speed, double rotation)
   {
-    m_dDrive.arcadeDrive(-speed, rotation);
+    m_dDrive.arcadeDrive(speed, rotation);
   }
 }

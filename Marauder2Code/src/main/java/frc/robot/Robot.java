@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -28,7 +28,7 @@ import frc.robot.subsystems.Vision;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
-public class Robot extends TimedRobot {
+public class Robot extends IterativeRobot {
   public static Elevator m_Elevator = new Elevator();
   public static DriveTrain m_driveTrain = new DriveTrain();
   public static OI m_oi;
@@ -40,6 +40,9 @@ public class Robot extends TimedRobot {
   SendableChooser<Command> m_chooser = new SendableChooser<>(); 
 
   public Vision Eyes;
+
+  public static int X = 0;
+  public static int Y = 0;
   
 
   /**
@@ -141,8 +144,10 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     Eyes.testPixy1();
     Eyes.PostCustomSmartDashInfo();
-    int X = Eyes.GetVisionInfo().get(1).X;
-    int Y = Eyes.GetVisionInfo().get(1).Y;
+    if(Eyes.GetVisionInfo().get(1) != null){
+    X = Eyes.GetVisionInfo().get(1).X;
+    Y = Eyes.GetVisionInfo().get(1).Y;
+    }
 
     SmartDashboard.putNumber("Our X From Vision:", X);
     SmartDashboard.putNumber("Our Y From Vision:", Y);

@@ -49,7 +49,8 @@ public OI()
   
 double center = 157.5;
 double Rotation = 0.5;
-double Speed = 0;
+double Speed = .5;
+
 
 //double Rotation = (center-X)/center;
 
@@ -72,7 +73,7 @@ double Speed = 0;
   RightBumper.whenPressed(new ToggleIntake());
   A_button.whenReleased(new CloseIntake());
   B_button.whenReleased(new CloseIntake());
-  X_button.whileHeld(new LineUp(Speed,Rotation));
+  X_button.whileHeld(new LineUp(Speed, center));
   //Configure Elevator
  /* X_button.whileHeld(new ElevatorUp());
   X_button.whenReleased(new ElevatorStop());
