@@ -17,6 +17,7 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.PixyCamSPI;
 import frc.robot.commands.SimpleAuto;
 import edu.wpi.first.cameraserver.CameraServer;
 import frc.robot.subsystems.Vision;
@@ -38,7 +39,8 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand = null;
   SendableChooser<Command> m_chooser = new SendableChooser<>(); 
 
-  Vision Eyes;
+  public Vision Eyes;
+  
 
   /**
    * This function is run when the robot is first started up and should be
@@ -57,6 +59,8 @@ public class Robot extends TimedRobot {
     server.startAutomaticCapture("cam0",0);
 
    Eyes = new Vision();
+  
+   
   }
 
   /**
@@ -137,6 +141,11 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     Eyes.testPixy1();
     Eyes.PostCustomSmartDashInfo();
+    int X = Eyes.GetVisionInfo().get(1).X;
+    int Y = Eyes.GetVisionInfo().get(1).Y;
+
+    SmartDashboard.putNumber("Our X From Vision:", X);
+    SmartDashboard.putNumber("Our Y From Vision:", Y);
   }
 
   /**

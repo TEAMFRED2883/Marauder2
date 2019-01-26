@@ -82,6 +82,12 @@ public class Vision extends Subsystem {
 				ourPacket.Y = packets.get(i).get(j).Y;
 				ourPacket.Width = packets.get(i).get(j).Width;
 				ourPacket.Height = packets.get(i).get(j).Height;
+				if(visonValues.containsKey(i))
+				{
+					visonValues.replace(i, ourPacket);
+				}
+				else
+					visonValues.put(i, ourPacket);
 			}
 			}	
 		}
