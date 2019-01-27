@@ -10,6 +10,7 @@ import java.util.HashMap;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
 
 
 public class Vision extends Subsystem {
@@ -62,7 +63,7 @@ public class Vision extends Subsystem {
 		}
 		
 		SmartDashboard.putNumber("Pixy Vision: packets size: ", packets.size());
-
+		Robot.PixySigCount = packets.get(1).size();
 
 		if(DynamicInput == true){
 			for(int i = 1; i <= PixyCamSPI.PIXY_SIG_COUNT ; i++) {

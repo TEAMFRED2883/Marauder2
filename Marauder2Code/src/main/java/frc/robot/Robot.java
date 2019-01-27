@@ -43,6 +43,8 @@ public class Robot extends IterativeRobot {
 
   public static int X = 0;
   public static int Y = 0;
+  public static int Width = 0;
+  public static int PixySigCount = 0;
   
 
   /**
@@ -147,6 +149,7 @@ public class Robot extends IterativeRobot {
     if(Eyes.GetVisionInfo().get(1) != null){
     X = Eyes.GetVisionInfo().get(1).X;
     Y = Eyes.GetVisionInfo().get(1).Y;
+    Width = Eyes.GetVisionInfo().get(1).Width;
     }
 
     SmartDashboard.putNumber("Our X From Vision:", X);

@@ -31,35 +31,34 @@ public class LineUp extends Command {
   @Override
   protected void execute() {
     double temp = Robot.X;
-    double temp2 = Robot.Y;
-    double Rotation = (temp - center)/center;
-    double Speed = (temp2 - 60)/60;
+    double temp2 = Robot.Width;
+    double Rotation = (temp - center)/center*0.6;
+    double Speed = (160 - temp2)/160*0.6;
 
     if(Speed < 0){
         SmartDashboard.putString("Direction", "Back");
-        Speed -= .2;
+        //Speed -= .2;
     }
     else{
         SmartDashboard.putString(("Direction"), "Forward");
-        Speed += .2;
+       // Speed += .2;
     }
     if(Rotation < 0){
     SmartDashboard.putString(("Direction2"), "Left");
-    Rotation -=.2;
+    //Rotation -=.2;
     }
     else{
       SmartDashboard.putString("Direction2", "Right");
-      Rotation += .2;
+      //Rotation += .2;
     }
 
     SmartDashboard.putNumber("Rotation Calculated", Rotation);
+    SmartDashboard.putNumber("Speed Calculated", Speed);
 
 
-    //if((Robot.X > center + 20 || Robot.X < center - 20) && (Robot.Y > 65 || Robot.X < 55))
-    Robot.m_driveTrain.DriveWithXbox(Rotation*.5, (Speed*.5));
-    //else{
-   // Robot.m_driveTrain.DriveWithXbox(0, 0);
-   //}
+    if(Robot.PixySigCount == 1) {
+    Robot.m_driveTrain.DriveWithXbox(Rotation, (Speed));
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
